@@ -10,7 +10,7 @@ The application follows a layered design pattern to ensure scalability, maintain
 
 ## 🏗 Architecture Diagram
 
-![To-Do App Python Flask](c:\Users\DELL\Pictures\projrct\To-Do-App-Python-Flask\Blank diagram.png)
+![To-Do App Python Flask](![lll](<Blank diagram.png>))
 
 The system is structured into the following main layers:
 
