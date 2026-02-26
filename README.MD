@@ -1,64 +1,139 @@
-# To-Do App using Python and Flask
+# 📝 To-Do App – Architecture Overview
 
-## Description
-A simple to-do app built with Python using the Flask framework. The app allows users to create, edit, and manage their tasks. This project is part of my capstone project portfolio based on [100 Days of Code: The Complete Python Pro Bootcamp](https://www.udemy.com/course/100-days-of-code/) by Angela Wu.It is designed to showcase my skills in web development using Flask and various other technologies.
+This project is a **Flask-based To-Do Web Application** designed using a clean, modular architecture that separates concerns between routing, business logic, presentation, and data storage.
 
-Current functionality only allows user to edit tasks in a single master to do list. For future improvements, I'd consider creating a functionality to manage different to do lists (like a traditional Reminders app) and viewing completed tasks. 
-![Current Version of the App](images/current-version-of-romans-to-do-app.png)
+The application follows a layered design pattern to ensure scalability, maintainability, and future extensibility.
 
-## Table of Contents
-- [Usage](#usage)
-- [Features](#features)
-- [Future Improvements](#future-improvements)
-- [Technologies Used](#technologies-used)
-- [Challenges Faced](#challenges-faced)
-- [Contact Information](#contact-information)
-- [Acknowledgments](#acknowledgments)
-- [Links](#links)
+---
 
+## 🏗 Architecture Overview
 
-## Usage
-1. Run the app: `python main.py`
-2. Open a web browser and go to `http://127.0.0.1:5000`
-3. Interact with the app to create, edit, and manage your tasks.
+## 🏗 Architecture Diagram
 
-## Features
-- Create tasks with descriptions and due dates.
-- Edit existing task's description and due dates.
-- Mark tasks as completed (which will also remove them from your lists).
+![To-Do App Python Flask](Blank diagram.png)
 
-## Future Improvements
-After I tackle a few other projects, I'd consider enhancing the app in the future, including:
-- Give user ability to sort to-dos by name, due status, or due date.
-- Give user ability to create different lists with to do tasks.
-- Give user ability to move tasks between lists.
-- Allow user to view completed tasks within each list.
-- Allow user to edit and delete lists. 
-- Update the homepage to display all to-do lists and when user clicks on a list, it will take them to a unique url with that to do list.
-- Adding user authentication for personalized task management.
-- Implementing task categorization and filtering.
+The system is structured into the following main layers:
 
-## Technologies Used
-- Python
-- Flask
-- Pandas
-- HTML
-- Bootstrap (CSS Framework)
+### 1️⃣ Client Layer
+- Users interact with the application through a **Web Browser**.
+- Communication happens via **HTTP requests**.
+- UI is rendered using:
+  - HTML
+  - CSS
+  - Bootstrap
+  - Jinja2 templating engine
 
-## Challenges Faced
-One of the biggest challenges of creating this app was writing html and css code. I'm also not very familiar with bootstrap framework so it took a lot of experimenting and debugging to get the app going. 
+---
 
-For example, I initially used HTML tables to display the list of tasks, but I couldn't get it to display the way I wanted. I found a work-around by using containers and divs. Here's what an earlier draft looked like: 
-![Earlier Version of the App](images/first-version-of-my-to-do-app.png)
+### 2️⃣ Flask Web Application Layer
 
-## Contact Information
-I welcome any feedback from the community and you're welcome to fork the repository for your own project. 
-You can reach me at [roman.pk@yahoo.com](mailto:roman.pk@yahoo.com).
+The core backend is built using **Flask (Python)** and is divided into:
 
-## Acknowledgments
-- [Bootstrap](https://getbootstrap.com) - CSS framework for styling.
-- [Pandas](https://pandas.pydata.org) - Used for data manipulation.
+#### 🔹 Task Controller / Routes (CRUD)
+- Handles HTTP requests
+- Manages Create, Read, Update, Delete operations
+- Connects frontend to business logic
 
-## Links
-- Live Demo - TBA 
-- [GitHub Repository](https://github.com/roman-pk/To-Do-App-Python-Flask)
+#### 🔹 Task Service (Business Logic)
+- Processes task-related logic
+- Validates inputs
+- Manages task transformations
+- Separates business rules from route handling
+
+This separation ensures clean code architecture and better maintainability.
+
+---
+
+### 3️⃣ Templates Layer
+- Built using **Jinja2 templates**
+- Renders dynamic task data
+- Styled with HTML/CSS and Bootstrap
+- Responsible for UI presentation
+
+---
+
+### 4️⃣ Data Processing Layer
+- Uses **Pandas** for data manipulation
+- Handles:
+  - Task filtering
+  - Sorting
+  - Data transformations
+- Ensures clean separation between logic and storage
+
+---
+
+### 5️⃣ Storage Layer
+
+Current implementation:
+- Tasks stored in **CSV / Local file storage**
+
+Future enhancement:
+- Replace with relational database (e.g., SQLite or PostgreSQL)
+
+---
+
+## 🔄 Application Flow
+
+1. User sends request from browser  
+2. Flask route receives request  
+3. Route calls Task Service  
+4. Task Service processes logic  
+5. Data is read/written to storage  
+6. Template renders updated task list  
+7. Response sent back to user  
+
+---
+
+## 🚀 Current Features
+
+- Add tasks
+- Edit tasks
+- Delete tasks
+- View task list
+- Persistent storage using CSV
+
+---
+
+## 🔮 Planned Future Enhancements
+
+- Multi-list support
+- Task categorization / tags
+- Sorting & filtering
+- Completed task view
+- Move tasks between lists
+- User authentication
+- Database integration
+
+---
+
+## 🧩 Design Principles
+
+- Separation of Concerns  
+- Modular Architecture  
+- Scalable structure  
+- Easy future extensibility  
+- Clean CRUD-based routing  
+
+---
+
+## 🛠 Tech Stack
+
+- Python  
+- Flask  
+- Jinja2  
+- HTML/CSS  
+- Bootstrap  
+- Pandas  
+- CSV File Storage  
+
+---
+
+## ▶️ How to Run the Project
+
+```bash
+git clone <repository-url>
+cd <project-folder>
+python -m venv venv
+venv\Scripts\activate  # On Windows
+pip install -r requirements.txt
+python app.py
